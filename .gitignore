@@ -1,0 +1,8 @@
+workspace/
+.DS_Store
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+.claude/
+local/

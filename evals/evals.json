@@ -1,0 +1,58 @@
+{
+  "skill_name": "study-pack",
+  "evals": [
+    {
+      "id": 1,
+      "name": "micro-notes-walkthrough-cheatsheet",
+      "prompt": "my friend sent me her lecture notes, they're at evals/files/lecture5_costs.docx. she writes: \"Полный разбор раздела с примерами и интуицией + шпора по теории\". can you do that for her?",
+      "expected_output": "Two PDFs in English (the language of the notes; no other language was explicitly requested): a section-by-section walkthrough with intuition/examples/traps, all '?' exercises solved, practice problems; and a 1-2 page landscape cheat sheet. Flags 'max' -> 'min' in 5.2 and the wrong profit (16 -> 0) in 5.4.",
+      "files": [
+        "evals/files/lecture5_costs.docx"
+      ],
+      "assertions": [
+        "Produces a walkthrough PDF and a separate cheat-sheet PDF",
+        "Cheat sheet is landscape and at most 2 pages",
+        "Deliverables are written in English, the language of the notes (no other language was explicitly requested)",
+        "Flags the 'max wL + rK' objective in 5.2 as an error (should be min)",
+        "Flags the profit of 16 in 5.4 as wrong (correct profit is 0)",
+        "Solves all four '?' exercises: CRS shown; cost of min{L,2K} is q(w + r/2); shut-down price 4 with supply q = (p-4)/2; at p = 20, q = 8 and profit 48",
+        "Includes practice problems with answers"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stats-problem-set-solutions",
+      "prompt": "Here's my problem set: evals/files/problem_set6_hypothesis_testing.pdf. Please solve all the problems step by step, especially the calculations, don't skip steps and keep it as simple as possible. Exam is on Monday :(",
+      "expected_output": "One solutions PDF in English. P1: z = -2, reject H0 (flags the answer key's z = -0.33 as using sigma instead of sigma/sqrt(n)). P2: mean 13.5, s ~ 1.773, t ~ 2.39 > 1.895, reject. P3: states two-sided interpretation; z = 2, p ~ 0.046 (notes continuity correction would give p ~ 0.057). P4: F, T, T, T with reasons. P5: reject if xbar > 104.93, power ~ 0.64, beta ~ 0.36.",
+      "files": [
+        "evals/files/problem_set6_hypothesis_testing.pdf"
+      ],
+      "assertions": [
+        "Produces a solutions PDF",
+        "P1: z = -2 and H0 is rejected at 5%",
+        "P1: flags the answer key's z = -0.33 as wrong (sigma used instead of sigma/sqrt(n))",
+        "P2: mean 13.5, t about 2.39, critical value about 1.895, H0 rejected",
+        "P3: states the two-sided interpretation and notes the result is borderline (continuity correction or exact test gives p about 0.057)",
+        "P4: answers F, T, T, T with reasons",
+        "P5: rejection region xbar > 104.93 (approx), power about 0.64, Type II error about 0.36"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "german-scan-study-guide",
+      "prompt": "I have my Analysis exam in two weeks, here's the sheet we got: evals/files/uebungsblatt4_scan.pdf (it's a scan). Can you make me a study guide with only the theory I need for these problems? no fluff pls",
+      "expected_output": "One study-guide PDF in German (language of the sheet), decimal commas typeset correctly. Problem-to-section map; theory for critical points + Hessian test, Lagrange, definiteness (Sylvester), Taylor 2nd order, gradient/directional derivative. Worked examples consistent with: A1 saddle (0,0), local min (1,1) f=-1; A2 x=4, y=2, f=8, lambda=2; A3 positive definite (minors 2,3,4); A4 1 + x + x^2/2 - y^2/2; A5 grad (4,1), directional derivative 16/5 = 3,2 (normalised v).",
+      "files": [
+        "evals/files/uebungsblatt4_scan.pdf"
+      ],
+      "assertions": [
+        "Produces a study-guide PDF",
+        "Study guide is written in German, the language of the sheet",
+        "Has a table mapping each Aufgabe to the guide sections it needs",
+        "No tuple or point renders as a decimal: extracted text has no '(d,d)' pattern without a space, and decimals use a comma",
+        "Worked results are correct: A1 saddle at (0,0), local min at (1,1); A2 x=4, y=2, lambda=2; A3 positive definite; A4 1 + x + x^2/2 - y^2/2; A5 grad (4,1), directional derivative 16/5",
+        "Stays compact: at most 8 pages"
+      ]
+    }
+  ]
+}

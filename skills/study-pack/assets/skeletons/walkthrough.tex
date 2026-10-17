@@ -1,0 +1,44 @@
+% study-pack skeleton: WALKTHROUGH. Copy to src/, rename, replace every <...>. Keep the structure.
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.1cm,headheight=14pt]{geometry}
+\def\studylang{english}
+\def\sourcelang{english}
+\input{preamble}
+\studyheader{<Course · Chapter>}{<Walkthrough>}
+\begin{document}
+{\LARGE\bfseries\sffamily\color{accent} <Title>}\par\smallskip
+<One sentence: what this covers and how it is organised.>
+
+\section{<Source section 1>}
+\begin{defn}
+<definitions, exactly as needed>
+\end{defn}
+\begin{idea}
+<why it works, in plain words>
+\end{idea}
+\begin{exmpl}[: <name>]
+<worked example from the source, every step>
+\end{exmpl}
+\begin{center}
+\begin{tikzpicture}\begin{axis}[econ,xlabel=$q$,ylabel=$p$,xmin=0,xmax=10,ymin=0,ymax=12]
+\addplot[c1,domain=0:9]{x+2} node[pos=1,anchor=west,font=\footnotesize]{$<label>$};
+\end{axis}\end{tikzpicture}
+\end{center}
+\begin{task}[: <in-text exercise>]
+<exercise>
+\end{task}
+\sol <solution>
+\ans{<answer>}
+\begin{trap}
+<common confusion>
+\end{trap}
+
+\section{<Practice>}
+\begin{enumerate}
+\item <exam-style problem> \hfill\textit{<answer>}
+\end{enumerate}
+\subsection*{<True or false>}
+\begin{tabularx}{\linewidth}{Xl}\toprule
+<statement> & <T/F, reason>\\\bottomrule
+\end{tabularx}
+\end{document}

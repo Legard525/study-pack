@@ -1,0 +1,27 @@
+% study-pack skeleton: FORMULA SHEET. Copy to src/, rename, replace every <...>. Keep the structure.
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1.8cm,headheight=14pt]{geometry}
+\def\studylang{english}
+\def\sourcelang{english}
+\input{preamble}
+\studyheader{<Course · Chapter>}{<Formula sheet>}
+\begin{document}
+{\LARGE\bfseries\sffamily\color{accent} <Title>}\par\smallskip
+\begin{center}
+\begin{tikzpicture}[node distance=8mm and 14mm,every node/.style={draw=accent,rounded corners,font=\footnotesize,inner sep=3pt}]
+\node (a) {(1) <f>}; \node (b) [right=of a] {(2) <f'>}; \node (c) [right=of b] {(3) <g>};
+\draw[-Stealth] (a) -- node[draw=none,above,font=\scriptsize]{<derivative>} (b);
+\draw[-Stealth] (b) -- node[draw=none,above,font=\scriptsize]{<substitution>} (c);
+\end{tikzpicture}
+\end{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\linewidth}{r>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{5.2cm}}\toprule
+\# & Formula & From what, how\\\midrule
+1 & $<formula>$ & definition\\
+2 & $<formula>$ & from (1): <derivative>\\
+3 & $<formula>$ \hfill\textit{bonus} & from (2): <substitution>\\\bottomrule
+\end{tabularx}
+\begin{method}[: <typical problem>]
+\begin{enumerate}\item <step> \item <step>\end{enumerate}
+\end{method}
+\end{document}

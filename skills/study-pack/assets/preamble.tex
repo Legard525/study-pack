@@ -1,0 +1,129 @@
+% study-pack shared preamble (pdfLaTeX). Copy next to your .tex; don't edit it per document.
+% Usage, after \documentclass and geometry:
+%   \def\studylang{english}    % output language: english, russian, ngerman, french, spanish, ...
+%   \def\sourcelang{english}   % language of the course materials (for \term{...}); optional
+%   \input{preamble}
+% Box titles are built in for english, russian, ngerman/german, french, spanish. For another
+% language, after \input{preamble}, \renewcommand the \ttl... macros below.
+%
+% Boxes: defn idea trap method task exmpl keyres srcerr.
+%   \begin{trap}[: suffix] ... \end{trap}             title "Trap: suffix"
+%   \begin{exmpl}[ 3][breakable] ... \end{exmpl}      long box allowed to split across pages
+% Boxes do NOT split across pages by default; pass [breakable] as the 2nd option only for a box
+% longer than about half a page.
+\providecommand\studylang{english}
+\providecommand\sourcelang{english}
+\usepackage{etoolbox}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+% Spanish babel's active shorthands (and decimal-dot handling) break TikZ, \% spacing and icomma.
+\ifboolexpr{test {\ifdefstring{\studylang}{spanish}} or test {\ifdefstring{\sourcelang}{spanish}}}
+  {\PassOptionsToPackage{es-noshorthands,es-nodecimaldot}{babel}}{}
+\ifdefstring{\studylang}{\sourcelang}
+  {\usepackage[\studylang]{babel}}
+  {\usepackage[\sourcelang,\studylang]{babel}}
+\usepackage{paratype}
+\usepackage{amsmath,amssymb,mathtools}
+% Decimal comma for non-English output. In math, type a space after any comma that separates
+% items: (1, 2), (x, y), a_{1, 4}. Otherwise (1,2) prints as the decimal 1,2.
+\ifdefstring{\studylang}{english}{}{\usepackage{icomma}}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{booktabs,array,tabularx,multirow}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric,fit,backgrounds,babel}% babel: French/Turkish active : ; ! stay safe in TikZ
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{needspace}
+\usepackage[hidelinks]{hyperref}
+
+% --- layout defaults that prevent the usual fix-up rounds ---
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt plus 1pt}
+\setlength{\emergencystretch}{3em}   % no overfull text lines
+\allowdisplaybreaks                   % long align blocks may break across pages
+\clubpenalty=10000 \widowpenalty=10000 \displaywidowpenalty=10000
+\raggedbottom                         % no stretched pages before an unbreakable box
+\setlist{nosep,leftmargin=1.4em}
+
+\definecolor{accent}{RGB}{22,70,135}
+\definecolor{idea}{RGB}{0,120,110}
+\definecolor{trap}{RGB}{190,80,0}
+\definecolor{ex}{RGB}{60,110,30}
+\definecolor{grayline}{RGB}{150,150,150}
+\definecolor{c1}{RGB}{22,70,135}
+\definecolor{c2}{RGB}{200,90,20}
+\definecolor{c3}{RGB}{40,140,60}
+\definecolor{c4}{RGB}{170,40,90}
+
+% Source-language term inside output-language text: \term{deadweight loss}
+\newcommand{\term}[1]{\textit{\foreignlanguage{\sourcelang}{#1}}}
+
+% --- box titles ---
+\newcommand\ttlDefinition{Definition}\newcommand\ttlIntuition{Intuition}\newcommand\ttlTrap{Trap}
+\newcommand\ttlMethod{Method}\newcommand\ttlTask{Problem}\newcommand\ttlExample{Example}
+\newcommand\ttlKey{Key result}\newcommand\ttlSrcErr{Error in the source}
+\newcommand\ttlSolution{Solution.}\newcommand\ttlAnswer{Answer:}
+\newcommand\studytitles[9]{%
+  \renewcommand\ttlDefinition{#1}\renewcommand\ttlIntuition{#2}\renewcommand\ttlTrap{#3}%
+  \renewcommand\ttlMethod{#4}\renewcommand\ttlTask{#5}\renewcommand\ttlExample{#6}%
+  \renewcommand\ttlKey{#7}\renewcommand\ttlSrcErr{#8}\renewcommand\ttlSolution{#9}}
+\ifdefstring{\studylang}{russian}{\studytitles{Определение}{Интуиция}{Ловушка}{Алгоритм}{Задача}{Пример}{Главное}{Ошибка в исходнике}{Решение.}\renewcommand\ttlAnswer{Ответ:}}{}
+\ifdefstring{\studylang}{ngerman}{\studytitles{Definition}{Intuition}{Falle}{Vorgehen}{Aufgabe}{Beispiel}{Merke}{Fehler in der Vorlage}{Lösung.}\renewcommand\ttlAnswer{Ergebnis:}}{}
+\ifdefstring{\studylang}{german}{\studytitles{Definition}{Intuition}{Falle}{Vorgehen}{Aufgabe}{Beispiel}{Merke}{Fehler in der Vorlage}{Lösung.}\renewcommand\ttlAnswer{Ergebnis:}}{}
+\ifdefstring{\studylang}{french}{\studytitles{Définition}{Intuition}{Piège}{Méthode}{Exercice}{Exemple}{À retenir}{Erreur dans la source}{Solution.}\renewcommand\ttlAnswer{Réponse :}}{}
+\ifdefstring{\studylang}{spanish}{\studytitles{Definición}{Intuición}{Trampa}{Método}{Ejercicio}{Ejemplo}{Clave}{Error en la fuente}{Solución.}\renewcommand\ttlAnswer{Respuesta:}}{}
+
+% --- boxes ---
+\tcbset{
+  base/.style={enhanced,boxrule=0.6pt,arc=2pt,left=6pt,right=6pt,top=4pt,bottom=4pt,
+    fonttitle=\bfseries\sffamily\small,before skip=6pt,after skip=6pt},
+}
+\NewTColorBox{defn}{O{}O{}}{base,colback=accent!4,colframe=accent!70,title={\ttlDefinition#1},#2}
+\NewTColorBox{idea}{O{}O{}}{base,colback=idea!5,colframe=idea!75,title={\ttlIntuition#1},#2}
+\NewTColorBox{trap}{O{}O{}}{base,colback=trap!5,colframe=trap!80,title={\ttlTrap#1},#2}
+\NewTColorBox{method}{O{}O{}}{base,colback=idea!3,colframe=idea!60,title={\ttlMethod#1},#2}
+\NewTColorBox{task}{O{}O{}}{base,colback=ex!5,colframe=ex!75,title={\ttlTask#1},#2}
+\NewTColorBox{exmpl}{O{}O{}}{base,colback=ex!3,colframe=ex!55,title={\ttlExample#1},#2}
+\NewTColorBox{keyres}{O{}O{}}{base,colback=accent!8,colframe=accent,title={\ttlKey#1},#2}
+\NewTColorBox{srcerr}{O{}O{}}{base,colback=trap!3,colframe=trap!60,title={\ttlSrcErr#1},#2}
+\newcommand{\sol}{\par\smallskip\noindent\textbf{\ttlSolution}\ }
+\newcommand{\ans}[1]{\par\smallskip\noindent\colorbox{accent!10}{\parbox{\dimexpr\linewidth-2\fboxsep}{\textbf{\ttlAnswer} #1}}}
+
+% --- headings (never stranded at a page bottom) ---
+\titleformat{\section}{\Large\bfseries\sffamily\color{accent}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\sffamily\color{accent!85!black}}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\sffamily}{}{0em}{}
+\titlespacing*{\section}{0pt}{14pt}{6pt}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+\titlespacing*{\subsubsection}{0pt}{8pt}{2pt}
+% A heading never ends a page: it needs room for itself plus the start of what follows. Before a
+% tall unbreakable box, add \needspace{<box height>} yourself or the box moves and leaves the heading.
+\pretocmd{\section}{\needspace{8\baselineskip}}{}{}
+\pretocmd{\subsection}{\needspace{7\baselineskip}}{}{}
+\pretocmd{\subsubsection}{\needspace{5\baselineskip}}{}{}
+
+% --- graphs ---
+% \begin{axis}[econ, xlabel=$q$, ylabel=$p$]. Label curves at their end:
+%   \addplot[c1,domain=0:8]{2*x+4} node[pos=1,anchor=west,font=\footnotesize]{$MC$};
+% With several curves, use pos=0.9/0.95/1 and anchor=south west/west/north west so labels don't collide.
+\pgfplotsset{
+  every axis/.append style={tick label style={font=\footnotesize},label style={font=\small},
+    legend style={font=\footnotesize,draw=none,fill=none}},
+  econ/.style={axis lines=left,xlabel style={at={(ticklabel* cs:1)},anchor=north west},
+    ylabel style={rotate=-90,at={(ticklabel* cs:1)},anchor=south east},
+    xtick=\empty,ytick=\empty,width=6.2cm,height=5cm,samples=120,clip=false,
+    every axis plot/.append style={thick},
+    axis line style={-{Stealth[length=5pt]}},enlargelimits=false},
+}
+
+% Running header: \studyheader{Course · Chapter}{Deliverable}
+\newcommand{\studyheader}[2]{%
+  \pagestyle{fancy}\fancyhf{}%
+  \fancyhead[L]{\small\sffamily\color{grayline}#1}%
+  \fancyhead[R]{\small\sffamily\color{grayline}#2}%
+  \fancyfoot[C]{\small\thepage}%
+  \renewcommand{\headrulewidth}{0.3pt}}

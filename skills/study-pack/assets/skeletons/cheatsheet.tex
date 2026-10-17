@@ -1,0 +1,32 @@
+% study-pack skeleton: CHEAT SHEET (1-2 pages, A4 landscape, 3 columns). Copy to src/, rename, replace <...>.
+\documentclass[9pt,a4paper,landscape]{extarticle}
+\usepackage[margin=1.1cm,top=1.7cm,headheight=12pt,headsep=8pt]{geometry}
+\def\studylang{english}
+\def\sourcelang{english}
+\input{preamble}
+\studyheader{<Course · Chapter>}{<Cheat sheet>}
+\setlength{\parskip}{1pt}
+\setlength{\columnsep}{14pt}
+\tcbset{base/.append style={left=3pt,right=3pt,top=1pt,bottom=1pt,before skip=3pt,after skip=3pt}}
+\newcommand{\h}[1]{\par\smallskip{\sffamily\bfseries\color{accent}#1}\par}
+\begin{document}
+\raggedcolumns
+\begin{multicols}{3}
+\h{<Topic>}
+<definition in one line>
+\begin{itemize}
+\item <key result>
+\end{itemize}
+\begin{trap}
+<one-line trap>
+\end{trap}
+
+\h{<Topic>}
+<...>
+
+\h{<Glossary (only if source and output languages differ)>}
+\begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}X@{}}
+<source term> & <output term>\\
+\end{tabularx}
+\end{multicols}
+\end{document}

@@ -1,0 +1,35 @@
+% study-pack skeleton: STUDY GUIDE. Copy to src/, rename, replace every <...>. Keep the structure.
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.1cm,headheight=14pt]{geometry}
+\def\studylang{english}
+\def\sourcelang{english}
+\input{preamble}
+\studyheader{<Course · Sheet>}{<Study guide>}
+\begin{document}
+{\LARGE\bfseries\sffamily\color{accent} <Title>}\par\smallskip
+<One sentence: only the theory these problems need.>
+
+\begin{keyres}[: <which section for which problem>]
+\begin{tabularx}{\linewidth}{lXl}\toprule
+<Problem> & <Topic> & <Sections>\\\midrule
+1 & <topic> & \ref{s:one}\\\bottomrule
+\end{tabularx}
+\end{keyres}
+
+\section{<Topic>}\label{s:one}
+\begin{defn}
+<only the definitions and theorems actually needed>
+\end{defn}
+\begin{method}
+\begin{enumerate}\item <step>\item <step>\end{enumerate}
+\end{method}
+\begin{trap}
+<what goes wrong>
+\end{trap}
+\begin{exmpl}[ (<Problem 1>)]
+<short worked example from their own sheet>
+\end{exmpl}
+
+\section*{<Checklist before the exam>}
+\begin{itemize}\item <trap to check>\end{itemize}
+\end{document}

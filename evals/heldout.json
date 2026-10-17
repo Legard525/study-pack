@@ -1,0 +1,75 @@
+{
+  "skill_name": "study-pack",
+  "note": "Held-out evals: never used to tune the skill.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "physics-formula-sheet",
+      "prompt": "Can you go through evals/heldout/lecture7_ideal_gases.pdf and make me a sheet with every formula and what follows from what? I always get lost in which equation comes from which",
+      "files": [
+        "evals/heldout/lecture7_ideal_gases.pdf"
+      ],
+      "expected_output": "One formula-sheet PDF in English: dependency diagram, numbered formulas with a 'from what / how' column. Flags TV^γ = const (should be TV^(γ−1)) and the Carnot example (40%, not 60%).",
+      "assertions": [
+        "Produces a formula-sheet PDF",
+        "Shows a dependency diagram of which formula leads to which",
+        "Lists numbered formulas, each with where it comes from and how",
+        "Flags 'TV^γ = const' as wrong (correct: TV^(γ−1) = const)",
+        "Flags the Carnot example: efficiency is 40%, not 60%",
+        "Covers Mayer's relation, isothermal work nRT ln(V2/V1) and adiabatic work",
+        "Written in English"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "mc-photos-solutions",
+      "prompt": "here are photos of last year's midterm MC part: evals/heldout/ec220_midterm_photo1.jpg and evals/heldout/ec220_midterm_photo2.jpg. solve them and explain why the wrong options are wrong pls",
+      "files": [
+        "evals/heldout/ec220_midterm_photo1.jpg",
+        "evals/heldout/ec220_midterm_photo2.jpg"
+      ],
+      "expected_output": "One solutions PDF in English opening with an answer table: 1b 2c 3b 4d 5b 6a 7c 8c, each with why the distractors are wrong.",
+      "assertions": [
+        "Produces a solutions PDF",
+        "Opens with an answer table before the worked solutions",
+        "All eight answers correct: 1b, 2c, 3b, 4d, 5b, 6a, 7c, 8c",
+        "Explains why each wrong option is wrong (e.g. Q4 (b) 12 forgets to square the 3; Q7 (a) confuses sensitivity with P(ill|+))",
+        "Q1 shows P(A∩B) = 0.2 = P(A)P(B), so independent, and P(A|B) = 0.5",
+        "Written in English"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "spanish-cheat-sheet",
+      "prompt": "make me a one-page cheat sheet from this for my exam: evals/heldout/tema3_elasticidades.docx",
+      "files": [
+        "evals/heldout/tema3_elasticidades.docx"
+      ],
+      "expected_output": "One cheat-sheet PDF, A4 landscape, 1 page (2 max), in Spanish. Flags the reversed elastic/inelastic definition. Decimal commas.",
+      "assertions": [
+        "Produces a single cheat-sheet PDF",
+        "Landscape and at most 2 pages",
+        "Written in Spanish, the language of the notes",
+        "Flags the definition 'elástica si |ε| < 1' as reversed (elastic means |ε| > 1)",
+        "Decimals use a comma (−0,67, 266,7), none printed with a point",
+        "Keeps the worked numbers: ε = −0,67, IT max at P = 25, EC = 400, EP ≈ 266,7"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "no-latex-html-route",
+      "prompt": "solve worksheet evals/heldout/worksheet9_calculus.docx step by step pls, I want to check my answers. Note: this machine has no LaTeX installation (no latexmk/pdflatex/xelatex/lualatex/tectonic); do not try to install one.",
+      "files": [
+        "evals/heldout/worksheet9_calculus.docx"
+      ],
+      "expected_output": "A solutions PDF produced without LaTeX (HTML + browser print), math rendered, A4. Flags the key's answer to Q2 (should be −x²/4).",
+      "assertions": [
+        "Produces a solutions PDF without using LaTeX",
+        "Math is rendered (no raw TeX such as \\frac or $ in the PDF text)",
+        "PDF is A4",
+        "Flags the answer key's Q2 as wrong: ∫x ln x dx = x²/2 ln x − x²/4 + C",
+        "All five answers correct: e^(3x)(2x+3x²); x²/2 ln x − x²/4 + C; 3; y = x/4 + 1; (e−1)/2"
+      ]
+    }
+  ]
+}
