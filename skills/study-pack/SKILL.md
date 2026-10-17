@@ -1,6 +1,16 @@
 ---
 name: study-pack
-description: Use this skill when a student wants to study from their own course files (lecture notes, slides, textbook chapters, problem sets, seminar sheets, past exams; PDF, Word, scans or photos) and needs typeset study material back as PDF. It makes step-by-step solutions to every problem, a topic walkthrough with intuition and examples, a "what follows from what" formula sheet, a dense cheat sheet, or a compact study guide built around given problems. Use it even if they never say "study pack", in any language: "solve all of these without skipping steps", "make me a cheat sheet", "collect the theory I need for these problems, exam in two weeks", "Spickzettel", "шпора", "разбери задачи". Skip it for editing the student's own thesis or essay, summarising research papers, translating documents, making slide decks, or quick conceptual questions that need no course files.
+description: >-
+  Use this skill when a student wants to study from their own course files (lecture notes, slides,
+  textbook chapters, problem sets, seminar sheets, past exams; PDF, Word, scans or photos) and
+  needs typeset study material back as PDF. It makes step-by-step solutions to every problem, a
+  topic walkthrough with intuition and examples, a "what follows from what" formula sheet, a dense
+  cheat sheet, or a compact study guide built around given problems. Use it even if they never say
+  "study pack", in any language: "solve all of these without skipping steps", "make me a cheat
+  sheet", "collect the theory I need for these problems, exam in two weeks", "Spickzettel",
+  "шпора", "разбери задачи". Skip it for editing the student's own thesis or essay, summarising
+  research papers, translating documents, making slide decks, or quick conceptual questions that
+  need no course files.
 ---
 
 # study-pack
